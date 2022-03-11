@@ -32,8 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_165837) do
     t.string "title"
     t.string "location"
     t.date "date"
+    t.integer "admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_events_on_admin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +43,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_165837) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "events", "admins"
 end

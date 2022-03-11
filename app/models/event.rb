@@ -4,7 +4,7 @@ class Event < ApplicationRecord
     validates :date, presence: true
 
 
-    belongs_to :creator, class_name: 'User', foreign_key:'user_id'
+    belongs_to :creator, class_name: 'Admin', foreign_key:'admin_id'
     has_many :attendances
     has_many :users, through: :attendances
 end

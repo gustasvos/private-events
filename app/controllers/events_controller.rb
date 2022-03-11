@@ -8,7 +8,9 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = @user.events.build(event_params)
+        # byebug
+        @event = Event.new(event_params)
+        @event.admin_id = current_admin.id
 
         if @event.save
             redirect_to root_url
