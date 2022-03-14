@@ -7,6 +7,7 @@
             <h6><%= e.location %></h6>
             <h6><%= e.date %></h6>
             <% if admin_signed_in? && e.admin_id == current_admin.id %>
+                <%= link_to 'edit', edit_event_path(e), :class => "btn btn-primary btn-sm" %>
                 <%= button_to 'delete', event_path(e), method: :delete, data: { confirm: "Are you sure" }, :class => "btn btn-danger btn-sm mt-2" %>
             <% end %>
             <p>=========================</p>

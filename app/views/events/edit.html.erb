@@ -1,0 +1,7 @@
+<%= form_with model: @post do |form|%>
+    <div>
+        <%= form.label :body %>
+        <%= form.text_field :body %> 
+        <%= form.submit "Edit your post" %>
+    </div>
+<% end %>
