@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
     create_table :events do |t|
       t.string :title
       t.string :location
+      t.string :description
       t.date :date
       t.references :admin, null: false, foreign_key: true
 

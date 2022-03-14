@@ -1,9 +1,8 @@
-<h1>Index</h1>
-
 <% @events.each do |e| %>
     <div>
         <div>
             <h6><%= e.title %></h6>
+            <h6><%= e.description %></h6>
             <h6><%= e.location %></h6>
             <h6><%= e.date %></h6>
             <% if admin_signed_in? && e.admin_id == current_admin.id %>

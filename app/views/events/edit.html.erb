@@ -1,7 +1,17 @@
-<%= form_with model: @post do |form|%>
+<%= form_with model: @event do |form|%>
     <div>
-        <%= form.label :body %>
-        <%= form.text_field :body %> 
-        <%= form.submit "Edit your post" %>
+        <%= form.label "Title" %>
+        <%= form.text_field :title %>
+        
+        <%= form.label "Description" %>
+        <%= form.text_field :description %>
+
+        <%= form.label "Location" %>
+        <%= form.text_field :location %>
+        
+        <%= form.label "Date" %>
+        <%= form.date_field :date %>
+
+        <%= form.submit "Edit this event" %>
     </div>
 <% end %>
