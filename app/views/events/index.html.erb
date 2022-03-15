@@ -1,17 +1,26 @@
-<% @events.each do |e| %>
-    <div>
-        <div>
-            <h6><%= e.title %></h6>
-            <h6><%= e.description %></h6>
-            <h6><%= e.location %></h6>
-            <h6><%= e.date %></h6>
-            <% if admin_signed_in? && e.admin_id == current_admin.id %>
-                <%= link_to 'edit', edit_event_path(e), :class => "btn btn-primary btn-sm" %>
-                <%= button_to 'delete', event_path(e), method: :delete, data: { confirm: "Are you sure" }, :class => "btn btn-danger btn-sm mt-2" %>
-            <% end %>
-            <p>=========================</p>
-        </div>
-    </div>
-<% end %>
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col"><%= :title %></th>
+        <th scope="col"><%= :description%></th>
+        <th scope="col"><%= :location%></th>
+        <th scope="col"><%= :date%></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @events.each do |e| %>
+        <tr>
+            <td><% if admin_signed_in? && e.admin_id == current_admin.id %>
+                <%= link_to e.title, edit_event_path(e), :class => "link-dark" %>
+                <% end %>
+            </td>
+            <td><%= e.description %></td>
+            <td><%= e.location %></td>
+            <td><%= e.date %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
 
 <%= link_to 'New Event', new_event_path %>
