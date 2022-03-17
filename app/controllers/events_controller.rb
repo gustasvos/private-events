@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
-    before_action :authenticate_admin!, only: [:new, :create]
+    before_action :authenticate_admin!, only: [:new, :create, :edit]
 
     def index
         @events = Event.all
+        @attendance = Attendance.new
     end
 
     def new
@@ -15,11 +16,10 @@ class EventsController < ApplicationController
         # @event.admin_id = current_admin.id
 
         @event = current_admin.created_events.build(event_params)
-        byebug
         if @event.save
             redirect_to root_url
         else
-            p @event.errors
+            # p @event.errors
             render 'new'
         end
     end

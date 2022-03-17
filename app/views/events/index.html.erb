@@ -10,13 +10,17 @@
     <tbody>
         <% @events.each do |e| %>
         <tr>
-            <td><% if admin_signed_in? && e.admin_id == current_admin.id %>
-                <%= link_to e.title, edit_event_path(e), :class => "link-dark" %>
-                <% end %>
-            </td>
+            <td><%= link_to e.title, edit_event_path(e), :class => "link-dark" %></td>
             <td><%= e.description %></td>
             <td><%= e.location %></td>
             <td><%= e.date %></td>
+            <td>
+            <%= form_with model: @attendance do |form|%>
+                <%= form.hidden_field :event_id, value: e.id %>
+
+                <%= form.submit "Participate" %>
+            <% end %>
+            </td>
         </tr>
         <% end %>
     </tbody>
