@@ -1,9 +1,9 @@
 class Admin < ApplicationRecord
-  has_many :created_events, class_name: 'Event', foreign_key: :admin_id
-  has_many :attended_event, class_name: 'Attendances'
-  has_many :events, through: :attendances
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  has_many :created_events, class_name: 'Event', foreign_key: :admin_id
+  has_many :attended_event, class_name: 'Attendance'
+  # 1 admin = varios eventos
+  # 1 admin = varias attendances
 end

@@ -4,11 +4,9 @@ class AttendancesController < ApplicationController
         @attendance = Attendance.new(attendances_params)
         @attendance.admin_id = current_admin.id
         if @attendance.save
-            format.html do
             redirect_to event_path(@attendance.event_id), notice: 'Attendance was successfully confirmed.'
-            end
         else
-            format.html { render :show, status: :unprocessable_entity }
+            render :show, status: :unprocessable_entity
         end
     end
 

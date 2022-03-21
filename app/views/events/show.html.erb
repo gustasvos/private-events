@@ -1,8 +1,14 @@
-<h1><%= @event.title %></h1>
+<p>Title: <%= @event.title %></p>
 
 <p>Location: <%= @event.location %></p>
 
 <p>Description: <%= @event.description %></p>
 
-<p2>Date: <%= @event.date %><p2>
+<p>Date: <%= @event.date %><p>
 
+<p>Attendees: <% (Array @event.attendances).each do |attendees|%>
+    <%= attendees.id %>
+    <% end %>
+</p>
+
+<% console %>
