@@ -6,9 +6,14 @@
 
 <p>Date: <%= @event.date %><p>
 
-<p>Attendees: <% (Array @event.attendances).each do |attendees|%>
-    <%= attendees.id %>
-    <% end %>
-</p>
+<%= Attendance.where(event_id: @event.id).ids %>
+
+<%# retorna id do attendance de cada evento %>
+<%# Event.ids.each do |e| %>
+<%#= (Attendance.find_by(event_id: e)).id %>
+<%# end %>
+
+<%# Attendance.find_by(event_id: @event.id) %>
+<%# attendees.admin_id %>
 
 <% console %>
